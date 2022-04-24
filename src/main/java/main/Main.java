@@ -20,8 +20,9 @@ public class Main {
         comment.setText("Demo Comment");
 
         var commentService = context.getBean(CommentService.class);
-        String returnedValue = commentService.publishComment(comment);
-        logger.info(returnedValue);
+        commentService.publishComment(comment);
+        commentService.deleteComment(comment); // the only annotated method by Aspect
+        commentService.editComment(comment);
 
 /**
    Old way without using Spring context

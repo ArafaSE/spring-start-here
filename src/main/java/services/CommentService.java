@@ -30,4 +30,13 @@ public class CommentService {
 
         return "SUCCESS";
     }
+
+    @ToLog
+    public void deleteComment(Comment comment){
+        logger.info("Deleting comment:" + comment.getText());
+    }
+
+    public void editComment(Comment comment){
+        logger.info("Editing comment:" + comment.getText());
+    }
 }
