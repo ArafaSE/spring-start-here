@@ -18,8 +18,8 @@ public class Main {
         comment.setText("Demo Comment");
 
         var commentService = context.getBean(CommentService.class);
-        commentService.publishComment(comment);
-        commentService.deleteComment(comment); // the only annotated method by Aspect
-        commentService.editComment(comment);
+        Object returnedValue = commentService.publishComment(comment);
+
+        logger.info("Main Code Finished! with state: " + returnedValue);
     }
 }

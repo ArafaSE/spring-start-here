@@ -21,22 +21,21 @@ public class CommentService {
         this.commentNotificationProxy = commentNotificationProxy;
     }
 
-    public String publishComment(Comment comment){
+    @ToLog
+    public String publishComment(Comment comment) {
 
         logger.info("Publishing comment:" + comment.getText());
 
-        commentRepository.storeComment(comment);
-        commentNotificationProxy.sendComment(comment);
+        // Omitted code:
 
         return "SUCCESS";
     }
 
-    @ToLog
-    public void deleteComment(Comment comment){
+    public void deleteComment(Comment comment) {
         logger.info("Deleting comment:" + comment.getText());
     }
 
-    public void editComment(Comment comment){
+    public void editComment(Comment comment) {
         logger.info("Editing comment:" + comment.getText());
     }
 }

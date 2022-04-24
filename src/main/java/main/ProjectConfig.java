@@ -5,6 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import services.LoggingAspect;
+import services.SecurityAspect;
 
 @Configuration
 @ComponentScan(
@@ -14,7 +15,12 @@ import services.LoggingAspect;
 public class ProjectConfig {
 
     @Bean
-    public LoggingAspect aspect() {
+    public LoggingAspect loggingAspect() {
         return new LoggingAspect();
+    }
+
+    @Bean
+    public SecurityAspect securityAspect(){
+        return new SecurityAspect();
     }
 }
