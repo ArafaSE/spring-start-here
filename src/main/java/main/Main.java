@@ -1,25 +1,16 @@
 package main;
 
-import model.Comment;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import services.CommentService;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ComponentScans;
 
-import java.util.logging.Logger;
-
+@ComponentScan(basePackages = {"controllers", "service", "model"})
+@SpringBootApplication
 public class Main {
 
-    private static Logger logger = Logger.getLogger(Main.class.getName());
-
     public static void main(String[] args) {
-        var context = new AnnotationConfigApplicationContext(ProjectConfig.class);
-
-        var comment = new Comment();
-        comment.setAuthor("Mohamed");
-        comment.setText("Demo Comment");
-
-        var commentService = context.getBean(CommentService.class);
-        Object returnedValue = commentService.publishComment(comment);
-
-        logger.info("Main Code Finished! with state: " + returnedValue);
+        SpringApplication.run(Main.class, args);
     }
+
 }

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+</head>
+<body>
+<h2> Welcome
+    <span
+            th:style="'color:' + ${color}"
+            th:text="${name}"
+    ></span>
+    to the Spring boot demo
+</h2>
+
+</body>
+</html>
