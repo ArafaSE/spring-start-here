@@ -7,14 +7,27 @@ import org.springframework.web.context.annotation.RequestScope;
 @RequestScope
 public class LoginProcessor {
 
+    private final LoggedUserManagementService loggedUserManagementService;
+
     private String username;
     private String password;
+
+    public LoginProcessor(LoggedUserManagementService loggedUserManagementService) {
+        this.loggedUserManagementService = loggedUserManagementService;
+    }
+
 
     public boolean login(){
         String username = this.getUsername();
         String password = this.getPassword();
 
-        return "Mohamed".equals(username) && "Password".equals(password);
+        boolean loginResult = "Mohamed".equals(username) && "MohamedArafa".equals(password);
+
+        if (loginResult){
+            loggedUserManagementService.setUsername(username);
+        }
+
+        return loginResult;
     }
 
     public String getUsername() {
