@@ -5,21 +5,22 @@ import model.PaymentDetails;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.logging.Logger;
 
 @RestController
 public class PaymentController {
 
-    private final PaymentService paymentService;
-
-    public PaymentController(PaymentService paymentService) {
-        this.paymentService = paymentService;
-    }
+    private static Logger logger = Logger.getLogger(PaymentController.class.getName());
 
     @PostMapping("/payment")
-    public ResponseEntity<PaymentDetails> makePayment() {
+    public ResponseEntity<PaymentDetails> makePayment(
+            @RequestBody PaymentDetails paymentDetails
+    ) {
 
-        PaymentDetails paymentDetails = PaymentService.processPayment();
+        logger.info("Received Payment " + paymentDetails.getAmount());
 
         return ResponseEntity
                 .status(HttpStatus.ACCEPTED)
