@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class LoginController {
 
-    private final LoggedUserManagementService loggedUserManagementService = new LoggedUserManagementService();
-    private final LoginProcessor loginProcessor = new LoginProcessor(loggedUserManagementService);
+    private final LoginProcessor loginProcessor;
+
+    public LoginController(LoginProcessor loginProcessor) {
+        this.loginProcessor = loginProcessor;
+    }
 
     @GetMapping("/")
     public String loginGet() {
@@ -28,7 +31,7 @@ public class LoginController {
         boolean loggedIn = loginProcessor.login();
 
         if (loggedIn) {
-            return "main.html";
+            return "redirect:/main";
         }
 
         model.addAttribute("message", "Login Failed!");

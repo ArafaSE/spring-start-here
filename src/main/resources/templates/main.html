@@ -3,9 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Main</title>
+    <style>
+        span{color:blue;}
+    </style>
 </head>
 <body>
     <h1>Welcome, <span th:text="${username}"></span></h1>
+    <h2>
+        Your Login Number is <span th:text="${loginCount}"></span>
+    </h2>
     <a href="/main?logout">Log out</a>
 </body>
 </html>
